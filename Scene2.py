@@ -90,7 +90,8 @@ def show_skill_productivity_meters(monotony_before=75, productivity_before=82, s
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric("🧠 Monotony Score", f"{monotony_before}%" if not monotony_after else f"{monotony_after}%",
-                  delta=f"{monotony_before - monotony_after}%" if monotony_after else None)
+                  delta=f"{monotony_after - monotony_before}%" if monotony_after else None)
+
     with col2:
         st.metric("⚙️ Productivity", f"{productivity_before}%" if not productivity_after else f"{productivity_after}%",
                   delta=f"+{productivity_after - productivity_before}%" if productivity_after else None)
@@ -146,8 +147,8 @@ if 'test_started' not in st.session_state:
 
 else:
     st.markdown("### ⏳ Generating questions using IBM Granite AI model...")
-    with st.spinner("Preparing your challenge..."):
-        time.sleep(5)  # simulate loading
+    with st.spinner("Preparing your challenge IBM Granite..."):
+        time.sleep(7)  # simulate loading
 
     st.subheader("Before Test")
     show_skill_productivity_meters()
